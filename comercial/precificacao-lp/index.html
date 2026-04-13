@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pulso — Assessoria de Marketing Médico | Planos e Precificação</title>
+  <meta name="description" content="Planos de marketing médico com IA nativa para clínicas e consultórios. Resultados mensuráveis, ROI transparente, equipe especializada em saúde." />
+  <meta property="og:title" content="Pulso — Marketing Médico com IA Nativa" />
+  <meta property="og:description" content="Assessoria especializada em marketing para clínicas médicas. Brasília-DF. Conheça nossos planos." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: {
+              950: '#050d1a',
+              900: '#0A1628',
+              800: '#0f1e36',
+              700: '#1E293B',
+              600: '#253350',
+            },
+            azure: {
+              600: '#1565C0',
+              500: '#1976D2',
+              400: '#2196F3',
+              300: '#64B5F6',
+            },
+            gold: {
+              600: '#C49A3A',
+              500: '#E6B25D',
+              400: '#F0C978',
+              300: '#F8E5B5',
+            },
+            emerald: {
+              500: '#10B981',
+              400: '#34D399',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
+          },
+          backgroundImage: {
+            'grid-pattern': "linear-gradient(rgba(59,130,246,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(59,130,246,0.05) 1px, transparent 1px)",
+          },
+          backgroundSize: {
+            'grid': '60px 60px',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .gradient-text {
+      background: linear-gradient(135deg, #E6B25D 0%, #F0C978 50%, #E6B25D 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .gradient-text-blue {
+      background: linear-gradient(135deg, #64B5F6 0%, #2196F3 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .card-glow {
+      box-shadow: 0 0 40px rgba(21, 101, 192, 0.15), 0 4px 24px rgba(0,0,0,0.4);
+    }
+    .card-glow-gold {
+      box-shadow: 0 0 60px rgba(230, 178, 93, 0.2), 0 4px 32px rgba(0,0,0,0.5);
+    }
+    .hero-gradient {
+      background: radial-gradient(ellipse at 20% 50%, rgba(21,101,192,0.15) 0%, transparent 60%),
+                  radial-gradient(ellipse at 80% 20%, rgba(230,178,93,0.08) 0%, transparent 50%),
+                  #0A1628;
+    }
+    .section-gradient {
+      background: linear-gradient(180deg, #0A1628 0%, #0f1e36 100%);
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #1565C0 0%, #1976D2 100%);
+      transition: all 0.3s ease;
+    }
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #1976D2 0%, #2196F3 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(21,101,192,0.4);
+    }
+    .btn-gold {
+      background: linear-gradient(135deg, #E6B25D 0%, #F0C978 100%);
+      transition: all 0.3s ease;
+    }
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(230,178,93,0.4);
+    }
+    .metric-card {
+      background: linear-gradient(135deg, #1E293B 0%, #253350 100%);
+      border: 1px solid rgba(59,130,246,0.2);
+      transition: all 0.3s ease;
+    }
+    .metric-card:hover {
+      border-color: rgba(230,178,93,0.4);
+      transform: translateY(-4px);
+    }
+    .plan-card {
+      background: linear-gradient(160deg, #1E293B 0%, #0f1e36 100%);
+      border: 1px solid rgba(59,130,246,0.15);
+      transition: all 0.3s ease;
+    }
+    .plan-card:hover {
+      border-color: rgba(59,130,246,0.4);
+    }
+    .plan-card.featured {
+      background: linear-gradient(160deg, #1a2d52 0%, #0f2040 100%);
+      border: 2px solid #E6B25D;
+    }
+    .table-row:hover {
+      background: rgba(59,130,246,0.06);
+    }
+    .tag {
+      background: rgba(21,101,192,0.2);
+      border: 1px solid rgba(21,101,192,0.4);
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-up {
+      animation: fadeUp 0.7s ease forwards;
+    }
+    .divider-gold {
+      background: linear-gradient(90deg, transparent, #E6B25D, transparent);
+      height: 1px;
+    }
+    .check-icon::before {
+      content: '✓';
+      color: #10B981;
+      font-weight: 700;
+      margin-right: 8px;
+    }
+    .x-icon::before {
+      content: '–';
+      color: #64748b;
+      margin-right: 8px;
+    }
+  </style>
+</head>
+<body class="bg-navy-900 text-gray-100 font-sans antialiased">
+
+  <!-- ===== HEADER / NAV ===== -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-navy-900/90 backdrop-blur-md border-b border-white/5">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-lg bg-azure-600 flex items-center justify-center">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L15 8.5H22L16.5 13L18.5 20L12 16.5L5.5 20L7.5 13L2 8.5H9L12 2Z" fill="white"/>
+          </svg>
+        </div>
+        <span class="font-display font-700 text-lg tracking-tight text-white">Pulso</span>
+        <span class="hidden sm:inline text-gray-400 text-sm">Marketing Médico</span>
+      </div>
+      <a href="#planos" class="btn-primary text-white text-sm font-600 px-5 py-2.5 rounded-lg">
+        Ver Planos
+      </a>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero-gradient min-h-screen flex items-center pt-20 pb-16 relative overflow-hidden">
+    <!-- Grid background -->
+    <div class="absolute inset-0 bg-grid-pattern bg-grid opacity-40 pointer-events-none"></div>
+    <!-- Decorative circles -->
+    <div class="absolute top-1/4 right-0 w-96 h-96 rounded-full bg-azure-600/5 blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-0 left-1/4 w-72 h-72 rounded-full bg-gold-500/5 blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-6xl mx-auto px-6 relative z-10">
+      <div class="max-w-4xl">
+        <div class="inline-flex items-center gap-2 tag rounded-full px-4 py-2 mb-8">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span class="text-azure-300 text-sm font-500">Pesquisa de mercado — Abril 2026</span>
+        </div>
+
+        <h1 class="font-display font-700 text-5xl sm:text-6xl lg:text-7xl leading-[1.05] mb-6">
+          O mercado de<br/>
+          marketing médico<br/>
+          <span class="gradient-text">vale R$ 3 bilhões.</span>
+        </h1>
+
+        <p class="text-gray-300 text-xl leading-relaxed mb-10 max-w-2xl font-300">
+          A Pulso é a única assessoria em Brasília com <strong class="text-white font-600">IA nativa na operação</strong>,
+          equipe de 7 especialistas e 20 anos de relacionamento com médicos.
+          Resultado: você atrai mais pacientes particulares, com ROI mensurável.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="#contato" class="btn-gold text-navy-900 font-700 px-8 py-4 rounded-xl text-lg text-center">
+            Agendar Reunião Gratuita
+          </a>
+          <a href="#planos" class="border border-white/20 text-white font-500 px-8 py-4 rounded-xl text-lg text-center hover:border-white/40 transition-colors">
+            Ver os Planos →
+          </a>
+        </div>
+
+        <!-- Trust badges -->
+        <div class="flex flex-wrap gap-6 mt-14 pt-10 border-t border-white/10">
+          <div class="flex items-center gap-2 text-gray-400 text-sm">
+            <svg class="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+            100% dentro das normas CFM
+          </div>
+          <div class="flex items-center gap-2 text-gray-400 text-sm">
+            <svg class="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+            IA nativa — não como feature
+          </div>
+          <div class="flex items-center gap-2 text-gray-400 text-sm">
+            <svg class="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+            Brasília-DF · Presencial
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PANORAMA DO MERCADO ===== -->
+  <section class="section-gradient py-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <div class="inline-block tag rounded-full px-4 py-1.5 mb-4">
+          <span class="text-azure-300 text-sm font-500 uppercase tracking-wider">Panorama do Mercado</span>
+        </div>
+        <h2 class="font-display font-700 text-4xl lg:text-5xl mb-4">
+          Números que <span class="gradient-text-blue">provam a oportunidade</span>
+        </h2>
+        <p class="text-gray-400 text-lg max-w-2xl mx-auto font-300">
+          Dados de fontes como Datafolha 2025, oHub 2026, Healthcare Success e CNES/DataSUS
+        </p>
+      </div>
+
+      <!-- Metrics grid -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
+        <div class="metric-card rounded-2xl p-6 text-center">
+          <div class="text-4xl font-display font-700 gradient-text mb-2">71</div>
+          <div class="text-gray-400 text-sm leading-snug">agências de marketing médico no DF<br/><span class="text-gray-500 text-xs">(oHub, 2026)</span></div>
+        </div>
+        <div class="metric-card rounded-2xl p-6 text-center">
+          <div class="text-4xl font-display font-700 gradient-text mb-2">5K+</div>
+          <div class="text-gray-400 text-sm leading-snug">clínicas e consultórios privados em Brasília<br/><span class="text-gray-500 text-xs">(CNES/DataSUS)</span></div>
+        </div>
+        <div class="metric-card rounded-2xl p-6 text-center">
+          <div class="text-4xl font-display font-700 gradient-text mb-2">53%</div>
+          <div class="text-gray-400 text-sm leading-snug">dos brasileiros usam redes sociais para aprender sobre saúde<br/><span class="text-gray-500 text-xs">(Datafolha, 2025)</span></div>
+        </div>
+        <div class="metric-card rounded-2xl p-6 text-center">
+          <div class="text-4xl font-display font-700 gradient-text mb-2">31%</div>
+          <div class="text-gray-400 text-sm leading-snug">crescimento em captação para healthtechs na Latam em 2024<br/><span class="text-gray-500 text-xs">(Distrito)</span></div>
+        </div>
+      </div>
+
+      <!-- Secondary metrics -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="bg-navy-700/50 border border-white/5 rounded-xl p-5 flex items-start gap-4">
+          <div class="w-10 h-10 rounded-lg bg-azure-600/20 flex items-center justify-center flex-shrink-0">
+            <svg class="w-5 h-5 text-azure-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+          </div>
+          <div>
+            <div class="font-600 text-white mb-1">SAM: R$ 1,5–3 bi/ano</div>
+            <div class="text-gray-400 text-sm">Marketing para clínicas de especialidade no Brasil</div>
+          </div>
+        </div>
+        <div class="bg-navy-700/50 border border-white/5 rounded-xl p-5 flex items-start gap-4">
+          <div class="w-10 h-10 rounded-lg bg-gold-500/20 flex items-center justify-center flex-shrink-0">
+            <svg class="w-5 h-5 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <div>
+            <div class="font-600 text-white mb-1">8–10% do faturamento</div>
+            <div class="text-gray-400 text-sm">Investimento ideal em marketing para clínicas médicas</div>
+          </div>
+        </div>
+        <div class="bg-navy-700/50 border border-white/5 rounded-xl p-5 flex items-start gap-4">
+          <div class="w-10 h-10 rounded-lg bg-emerald-500/20 flex items-center justify-center flex-shrink-0">
+            <svg class="w-5 h-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <div>
+            <div class="font-600 text-white mb-1">IA reduz custo em 30–50%</div>
+            <div class="text-gray-400 text-sm">Cases: Dasa (+45% produtividade), Unimed PR (90% auditoria automatizada)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider-gold max-w-6xl mx-auto"></div>
+
+  <!-- ===== TABELA COMPARATIVA ===== -->
+  <section class="section-gradient py-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <div class="inline-block tag rounded-full px-4 py-1.5 mb-4">
+          <span class="text-azure-300 text-sm font-500 uppercase tracking-wider">Concorrência</span>
+        </div>
+        <h2 class="font-display font-700 text-4xl lg:text-5xl mb-4">
+          Como a Pulso se compara <span class="gradient-text">ao mercado</span>
+        </h2>
+        <p class="text-gray-400 text-lg max-w-2xl mx-auto font-300">
+          Análise dos principais players nacionais de marketing médico
+        </p>
+      </div>
+
+      <div class="overflow-x-auto rounded-2xl border border-white/10">
+        <table class="w-full min-w-[700px]">
+          <thead>
+            <tr class="bg-navy-700/80 border-b border-white/10">
+              <th class="text-left p-5 text-gray-300 font-600 text-sm">Agência</th>
+              <th class="text-left p-5 text-gray-300 font-600 text-sm">Localização</th>
+              <th class="text-left p-5 text-gray-300 font-600 text-sm">Modelo de Preço</th>
+              <th class="text-left p-5 text-gray-300 font-600 text-sm">Diferencial</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="table-row border-b border-white/5 transition-colors">
+              <td class="p-5 font-500 text-gray-200">KOP / Agência Médico</td>
+              <td class="p-5 text-gray-400 text-sm">SP (nacional)</td>
+              <td class="p-5 text-gray-300 text-sm">A partir de R$ 297/mês</td>
+              <td class="p-5 text-gray-400 text-sm">Preços transparentes, acessível</td>
+            </tr>
+            <tr class="table-row border-b border-white/5 transition-colors">
+              <td class="p-5 font-500 text-gray-200">MarketMED</td>
+              <td class="p-5 text-gray-400 text-sm">RJ/SP</td>
+              <td class="p-5 text-gray-300 text-sm">Retainer R$ 5–15k/mês</td>
+              <td class="p-5 text-gray-400 text-sm">25 anos de mercado, parcerias Google/Meta</td>
+            </tr>
+            <tr class="table-row border-b border-white/5 transition-colors">
+              <td class="p-5 font-500 text-gray-200">Future Marketing</td>
+              <td class="p-5 text-gray-400 text-sm">Nacional</td>
+              <td class="p-5 text-gray-300 text-sm">Retainer R$ 3–8k/mês</td>
+              <td class="p-5 text-gray-400 text-sm">+300 clínicas, resultados comprovados</td>
+            </tr>
+            <tr class="table-row border-b border-white/5 transition-colors">
+              <td class="p-5 font-500 text-gray-200">Agência Rizzo</td>
+              <td class="p-5 text-gray-400 text-sm">Nacional</td>
+              <td class="p-5 text-gray-300 text-sm">Pacotes customizados</td>
+              <td class="p-5 text-gray-400 text-sm">+200 clientes, foco em conversão</td>
+            </tr>
+            <tr class="table-row border-b border-white/5 transition-colors">
+              <td class="p-5 font-500 text-gray-200">WTA3</td>
+              <td class="p-5 text-gray-400 text-sm">BSB/Nacional</td>
+              <td class="p-5 text-gray-300 text-sm">Retainer R$ 5–15k/mês</td>
+              <td class="p-5 text-gray-400 text-sm">17 anos, top 10 Latam, forte em SEO</td>
+            </tr>
+            <tr class="table-row border-b border-white/5 transition-colors">
+              <td class="p-5 font-500 text-gray-200">iMedicina</td>
+              <td class="p-5 text-gray-400 text-sm">Nacional</td>
+              <td class="p-5 text-gray-300 text-sm">Assinatura R$ 200–800/mês</td>
+              <td class="p-5 text-gray-400 text-sm">Plataforma SaaS, self-service</td>
+            </tr>
+            <tr class="bg-azure-600/10 border border-gold-500/40">
+              <td class="p-5">
+                <div class="flex items-center gap-2">
+                  <span class="font-700 text-white">Pulso</span>
+                  <span class="bg-gold-500 text-navy-900 text-xs font-700 px-2 py-0.5 rounded-full">BSB</span>
+                </div>
+              </td>
+              <td class="p-5 text-azure-300 text-sm font-500">Brasília-DF</td>
+              <td class="p-5">
+                <span class="text-gold-500 font-600">R$ 2.500–12.000/mês</span>
+              </td>
+              <td class="p-5 text-emerald-400 text-sm font-500">IA nativa · 7 sócios · Relacionamento médico · ROI transparente</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Key differentiators -->
+      <div class="mt-10 bg-navy-700/30 border border-white/5 rounded-2xl p-8">
+        <h3 class="font-600 text-white mb-4 text-lg">Por que médicos trocam de agência?</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+          {["Sem resultado mensurável", "Não entendem linguagem médica", "Posts genéricos, sem identidade", "Não conhecem as normas do CFM", "Gestores que mudam todo mês", "Cobram caro por social básico"].map(item => `
+          <div class="flex items-start gap-2 text-gray-400 text-sm">
+            <span class="text-red-400 font-700 mt-0.5 flex-shrink-0">✗</span>
+            <span>${item}</span>
+          </div>`).join('')}
+        </div>
+        <p class="mt-5 text-gray-300 text-sm pt-4 border-t border-white/10">
+          <span class="text-emerald-400 font-600">A Pulso resolve todos esses pontos:</span> dashboards em tempo real, equipe especializada em saúde, conteúdo estratégico, compliance CFM, gestor dedicado e IA que reduz seu custo operacional.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PLANOS ===== -->
+  <section id="planos" class="bg-navy-950 py-24 relative overflow-hidden">
+    <div class="absolute inset-0 bg-grid-pattern bg-grid opacity-20 pointer-events-none"></div>
+    <div class="max-w-6xl mx-auto px-6 relative z-10">
+      <div class="text-center mb-16">
+        <div class="inline-block tag rounded-full px-4 py-1.5 mb-4">
+          <span class="text-azure-300 text-sm font-500 uppercase tracking-wider">Precificação</span>
+        </div>
+        <h2 class="font-display font-700 text-4xl lg:text-5xl mb-4">
+          Planos transparentes,<br/>
+          <span class="gradient-text">resultados mensuráveis</span>
+        </h2>
+        <p class="text-gray-400 text-lg max-w-2xl mx-auto font-300">
+          Escolha o plano ideal para o momento da sua clínica. Todos incluem IA nativa e compliance com o CFM.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+        <!-- ESSENCIAL -->
+        <div class="plan-card rounded-2xl p-8 flex flex-col card-glow">
+          <div class="mb-6">
+            <div class="text-azure-400 text-sm font-600 uppercase tracking-wider mb-3">Essencial</div>
+            <div class="flex items-baseline gap-1 mb-1">
+              <span class="text-gray-400 text-xl">R$</span>
+              <span class="font-display font-700 text-5xl text-white">2.500</span>
+              <span class="text-gray-400">/mês</span>
+            </div>
+            <div class="text-gray-500 text-sm">+ R$ 2.000 setup único</div>
+          </div>
+
+          <div class="text-gray-400 text-sm mb-6 pb-6 border-b border-white/10">
+            Ideal para <strong class="text-gray-200">médico solo ou clínica pequena</strong> (1–3 profissionais) que quer presença digital profissional e previsível.
+          </div>
+
+          <ul class="space-y-3 flex-1 mb-8">
+            <li class="flex items-start gap-2 text-gray-300 text-sm">
+              <svg class="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Diagnóstico estratégico inicial incluso
+            </li>
+            <li class="flex items-start gap-2 text-gray-300 text-sm">
+              <svg class="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Gestão de redes sociais (12 posts/mês + stories)
+            </li>
+            <li class="flex items-start gap-2 text-gray-300 text-sm">
+              <svg class="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Google Meu Negócio otimizado e monitorado
+            </li>
+            <li class="flex items-start gap-2 text-gray-300 text-sm">
+              <svg class="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Relatório mensal com métricas de resultado
+            </li>
+            <li class="flex items-start gap-2 text-gray-300 text-sm">
+              <svg class="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Suporte via WhatsApp em horário comercial
+            </li>
+            <li class="flex items-start gap-2 text-gray-300 text-sm">
+              <svg class="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Conteúdo dentro das normas CFM
+            </li>
+            <li class="flex items-start gap-2 text-gray-500 text-sm">
+              <svg class="w-4 h-4 text-gray-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+              Tráfego pago (disponível no Crescimento)
+            </li>
+            <li class="flex items-start gap-2 text-gray-500 text-sm">
+              <svg class="w-4 h-4 text-gray-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+              Automação de atendimento (disponível no Crescimento)
+            </li>
+          </ul>
+
+          <div class="bg-white/5 rounded-xl p-4 mb-6 text-sm">
+            <div class="text-gray-400">Margem operacional estimada</div>
+            <div class="font-700 text-emerald-400 text-lg">55–65%</div>
+            <div class="text-gray-500 text-xs mt-1">Graças à operação com IA nativa</div>
+          </div>
+
+          <a href="#contato" class="btn-primary text-white font-600 py-3.5 rounded-xl text-center">
+            Começar com o Essencial
+          </a>
+        </div>
+
+        <!-- CRESCIMENTO (FEATURED) -->
+        <div class="plan-card featured rounded-2xl p-8 flex flex-col relative card-glow-gold">
+          <div class="absolute -top-4 left-1/2 -translate-x-1/2">
+            <span class="bg-gold-500 text-navy-900 text-xs font-700 px-4 py-1.5 rounded-full uppercase tracking-wider">Mais popular</span>
+          </div>
+
+          <div class="mb-6">
+            <div class="text-gold-500 text-sm font-600 uppercase tracking-wider mb-3">Crescimento</div>
+            <div class="flex items-baseline gap-1 mb-1">
+              <span class="text-gray-300 text-xl">R$</span>
+              <span class="font-display font-700 text-5xl text-white">5.500</span>
+              <span class="text-gray-300">/mês</span>
+            </div>
+            <div class="text-gray-400 text-sm">+ R$ 4.000 setup único</div>
+          </div>
+
+          <div class="text-gray-300 text-sm mb-6 pb-6 border-b border-gold-500/20">
+            Ideal para <strong class="text-white">clínica média</strong> (3–8 profissionais) que quer crescer no segmento de pacientes particulares com tráfego pago.
+          </div>
+
+          <ul class="space-y-3 flex-1 mb-8">
+            <li class="flex items-start gap-2 text-gray-200 text-sm">
+              <svg class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Tudo do plano Essencial
+            </li>
+            <li class="flex items-start gap-2 text-gray-200 text-sm">
+              <svg class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span>Tráfego pago (Google Ads + Meta Ads)<br/><span class="text-gray-400">Investimento em mídia mínimo R$ 2k/mês — pago pela clínica</span></span>
+            </li>
+            <li class="flex items-start gap-2 text-gray-200 text-sm">
+              <svg class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              2 landing pages de captação
+            </li>
+            <li class="flex items-start gap-2 text-gray-200 text-sm">
+              <svg class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Conteúdo estratégico (reels + carrosséis)
+            </li>
+            <li class="flex items-start gap-2 text-gray-200 text-sm">
+              <svg class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Automação básica (bot WhatsApp para agendamento)
+            </li>
+            <li class="flex items-start gap-2 text-gray-200 text-sm">
+              <svg class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Relatório quinzenal + reunião mensal
+            </li>
+          </ul>
+
+          <div class="bg-gold-500/10 border border-gold-500/20 rounded-xl p-4 mb-6 text-sm">
+            <div class="text-gold-400">Margem operacional estimada</div>
+            <div class="font-700 text-gold-500 text-lg">50–60%</div>
+            <div class="text-gray-400 text-xs mt-1">Graças à operação com IA nativa</div>
+          </div>
+
+          <a href="#contato" class="btn-gold text-navy-900 font-700 py-3.5 rounded-xl text-center">
+            Quero o Crescimento
+          </a>
+        </div>
+
+        <!-- PREMIUM -->
+        <div class="plan-card rounded-2xl p-8 flex flex-col card-glow">
+          <div class="mb-6">
+            <div class="text-azure-400 text-sm font-600 uppercase tracking-wider mb-3">Premium</div>
+            <div class="flex items-baseline gap-1 mb-1">
+              <span class="text-gray-400 text-xl">R$</span>
+              <span class="font-display font-700 text-5xl text-white">12.000</span>
+              <span class="text-gray-400">/mês</span>
+            </div>
+            <div class="text-gray-500 text-sm">+ R$ 8.000 setup único</div>
+          </div>
+
+          <div class="text-gray-400 text-sm mb-6 pb-6 border-b border-white/10">
+            Ideal para <strong class="text-gray-200">clínica grande ou rede</strong> (8+ profissionais) que quer dominar o mercado local e escalar pacientes particulares.
+          </div>
+
+          <ul class="space-y-3 flex-1 mb-8">
+            <li class="flex items-start gap-2 text-gray-300 text-sm">
+              <svg class="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Tudo do plano Crescimento
+            </li>
+            <li class="flex items-start gap-2 text-gray-300 text-sm">
+              <svg class="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              SEO completo + blog (4 artigos/mês)
+            </li>
+            <li class="flex items-start gap-2 text-gray-300 text-sm">
+              <svg class="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Site profissional responsivo premium
+            </li>
+            <li class="flex items-start gap-2 text-gray-300 text-sm">
+              <svg class="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Automação avançada (CRM + follow-up + agentes IA 24/7)
+            </li>
+            <li class="flex items-start gap-2 text-gray-300 text-sm">
+              <svg class="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Dashboard em tempo real com métricas de ROI
+            </li>
+            <li class="flex items-start gap-2 text-gray-300 text-sm">
+              <svg class="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Consultoria estratégica mensal (2h com especialista)
+            </li>
+            <li class="flex items-start gap-2 text-gray-300 text-sm">
+              <svg class="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              Gestor de conta dedicado
+            </li>
+            <li class="flex items-start gap-2 text-gray-300 text-sm">
+              <svg class="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              <span>Consultoria operacional básica<br/><span class="text-gray-500">Mídia mínima R$ 5k/mês — pago pela clínica</span></span>
+            </li>
+          </ul>
+
+          <div class="bg-white/5 rounded-xl p-4 mb-6 text-sm">
+            <div class="text-gray-400">Margem operacional estimada</div>
+            <div class="font-700 text-emerald-400 text-lg">45–55%</div>
+            <div class="text-gray-500 text-xs mt-1">Graças à operação com IA nativa</div>
+          </div>
+
+          <a href="#contato" class="btn-primary text-white font-600 py-3.5 rounded-xl text-center">
+            Quero o Premium
+          </a>
+        </div>
+      </div>
+
+      <!-- Consultoria avulsa -->
+      <div class="mt-10 bg-navy-800/50 border border-white/10 rounded-2xl p-8">
+        <h3 class="font-600 text-white mb-6 text-lg">Também disponível — Serviços Avulsos</h3>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          <div class="text-center p-4 bg-white/5 rounded-xl">
+            <div class="text-gold-500 font-700 text-xl mb-1">R$ 3.500</div>
+            <div class="text-gray-400 text-sm">Diagnóstico Estratégico</div>
+          </div>
+          <div class="text-center p-4 bg-white/5 rounded-xl">
+            <div class="text-gold-500 font-700 text-xl mb-1">R$ 350/h</div>
+            <div class="text-gray-400 text-sm">Consultoria por Hora</div>
+          </div>
+          <div class="text-center p-4 bg-white/5 rounded-xl">
+            <div class="text-gold-500 font-700 text-xl mb-1">R$ 5–15k</div>
+            <div class="text-gray-400 text-sm">Projeto de Automação</div>
+          </div>
+          <div class="text-center p-4 bg-white/5 rounded-xl">
+            <div class="text-gold-500 font-700 text-xl mb-1">R$ 5–8k</div>
+            <div class="text-gray-400 text-sm">Site Premium Avulso</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DIFERENCIAIS DA PULSO ===== -->
+  <section class="section-gradient py-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <div class="inline-block tag rounded-full px-4 py-1.5 mb-4">
+          <span class="text-azure-300 text-sm font-500 uppercase tracking-wider">Por que a Pulso</span>
+        </div>
+        <h2 class="font-display font-700 text-4xl lg:text-5xl mb-4">
+          7 diferenciais que nenhuma<br/>
+          <span class="gradient-text">outra agência tem</span>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <div class="bg-navy-700/40 border border-white/8 rounded-2xl p-7 hover:border-azure-600/40 transition-all group">
+          <div class="w-12 h-12 rounded-xl bg-azure-600/20 flex items-center justify-center mb-5 group-hover:bg-azure-600/30 transition-colors">
+            <svg class="w-6 h-6 text-azure-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h16a2 2 0 012 2v10a2 2 0 01-2 2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+          </div>
+          <h3 class="font-700 text-white text-lg mb-3">IA Nativa na Operação</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Não é feature de marketing. A IA é a espinha dorsal de toda a operação — permitindo atender 3x mais clientes com a mesma equipe.</p>
+        </div>
+
+        <div class="bg-navy-700/40 border border-white/8 rounded-2xl p-7 hover:border-gold-500/40 transition-all group">
+          <div class="w-12 h-12 rounded-xl bg-gold-500/20 flex items-center justify-center mb-5 group-hover:bg-gold-500/30 transition-colors">
+            <svg class="w-6 h-6 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <h3 class="font-700 text-white text-lg mb-3">Equipe de 7 Sócios Complementares</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Investidor, financeiro, tráfego, IA, CS, criativo e estrategista. Um time completo dedicado ao crescimento da sua clínica.</p>
+        </div>
+
+        <div class="bg-navy-700/40 border border-white/8 rounded-2xl p-7 hover:border-azure-600/40 transition-all group">
+          <div class="w-12 h-12 rounded-xl bg-azure-600/20 flex items-center justify-center mb-5 group-hover:bg-azure-600/30 transition-colors">
+            <svg class="w-6 h-6 text-azure-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+          </div>
+          <h3 class="font-700 text-white text-lg mb-3">20 Anos de Rede Médica</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Nosso sócio investidor tem 20 anos de relacionamento de confiança com médicos em Brasília. Isso é difícil de comprar.</p>
+        </div>
+
+        <div class="bg-navy-700/40 border border-white/8 rounded-2xl p-7 hover:border-emerald-500/40 transition-all group">
+          <div class="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center mb-5 group-hover:bg-emerald-500/30 transition-colors">
+            <svg class="w-6 h-6 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          </div>
+          <h3 class="font-700 text-white text-lg mb-3">ROI Mensurável e Transparente</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Dashboard em tempo real. Custo por paciente agendado. Taxa de conversão. Sem achismo — só dados reais.</p>
+        </div>
+
+        <div class="bg-navy-700/40 border border-white/8 rounded-2xl p-7 hover:border-azure-600/40 transition-all group">
+          <div class="w-12 h-12 rounded-xl bg-azure-600/20 flex items-center justify-center mb-5 group-hover:bg-azure-600/30 transition-colors">
+            <svg class="w-6 h-6 text-azure-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <h3 class="font-700 text-white text-lg mb-3">Brasília-First · Presencial</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Estamos aqui. Reuniões presenciais, relacionamento próximo, contexto local que agências nacionais não têm.</p>
+        </div>
+
+        <div class="bg-navy-700/40 border border-white/8 rounded-2xl p-7 hover:border-gold-500/40 transition-all group">
+          <div class="w-12 h-12 rounded-xl bg-gold-500/20 flex items-center justify-center mb-5 group-hover:bg-gold-500/30 transition-colors">
+            <svg class="w-6 h-6 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          </div>
+          <h3 class="font-700 text-white text-lg mb-3">Compliance CFM Total</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Todo conteúdo criado dentro das normas éticas do CFM. Você se preocupa com a medicina — nós cuidamos da comunicação correta.</p>
+        </div>
+
+        <div class="sm:col-span-2 lg:col-span-1 bg-gradient-to-br from-azure-600/20 to-navy-700/40 border border-azure-600/30 rounded-2xl p-7 hover:border-azure-600/60 transition-all group">
+          <div class="w-12 h-12 rounded-xl bg-azure-600/30 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-azure-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <h3 class="font-700 text-white text-lg mb-3">Abordagem Consultiva</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Não fazemos só marketing. Ajudamos a clínica a crescer como negócio: processos, financeiro, gestão de equipe e escala.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider-gold max-w-6xl mx-auto"></div>
+
+  <!-- ===== PROJEÇÃO DE RECEITA ===== -->
+  <section class="section-gradient py-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <div class="inline-block tag rounded-full px-4 py-1.5 mb-4">
+          <span class="text-azure-300 text-sm font-500 uppercase tracking-wider">Projeção de Receita</span>
+        </div>
+        <h2 class="font-display font-700 text-4xl lg:text-5xl mb-4">
+          Potencial de crescimento <span class="gradient-text">em 12 meses</span>
+        </h2>
+        <p class="text-gray-400 text-lg max-w-2xl mx-auto font-300">
+          Com operação alavancada por IA, 1 equipe atende 3x mais clientes que concorrentes tradicionais
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
+        <!-- Conservador -->
+        <div class="bg-navy-700/40 border border-white/10 rounded-2xl p-8">
+          <div class="text-gray-400 text-sm font-500 uppercase tracking-wider mb-6">Cenário Conservador</div>
+          <div class="space-y-4 mb-8">
+            <div class="flex justify-between items-center">
+              <span class="text-gray-400 text-sm">Total de clientes</span>
+              <span class="font-700 text-white">8</span>
+            </div>
+            <div class="flex justify-between items-center text-sm">
+              <span class="text-gray-400">Mix</span>
+              <span class="text-gray-300">4E + 3C + 1P</span>
+            </div>
+            <div class="border-t border-white/10 pt-4">
+              <div class="flex justify-between items-center">
+                <span class="text-gray-400 text-sm">MRR</span>
+                <span class="font-700 text-azure-400 text-xl">R$ 38.500</span>
+              </div>
+              <div class="flex justify-between items-center mt-2">
+                <span class="text-gray-400 text-sm">ARR</span>
+                <span class="font-700 text-white text-lg">R$ 462k</span>
+              </div>
+            </div>
+          </div>
+          <div class="w-full bg-navy-800 rounded-full h-2">
+            <div class="bg-azure-600 h-2 rounded-full" style="width: 26%"></div>
+          </div>
+          <div class="text-gray-500 text-xs mt-2">26% do potencial moderado</div>
+        </div>
+
+        <!-- Moderado (featured) -->
+        <div class="bg-gradient-to-b from-azure-600/20 to-navy-700/40 border border-azure-600/30 rounded-2xl p-8 relative">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2">
+            <span class="bg-azure-600 text-white text-xs font-700 px-3 py-1 rounded-full">Meta principal</span>
+          </div>
+          <div class="text-azure-400 text-sm font-500 uppercase tracking-wider mb-6">Cenário Moderado</div>
+          <div class="space-y-4 mb-8">
+            <div class="flex justify-between items-center">
+              <span class="text-gray-400 text-sm">Total de clientes</span>
+              <span class="font-700 text-white">15</span>
+            </div>
+            <div class="flex justify-between items-center text-sm">
+              <span class="text-gray-400">Mix</span>
+              <span class="text-gray-300">6E + 6C + 3P</span>
+            </div>
+            <div class="border-t border-azure-600/30 pt-4">
+              <div class="flex justify-between items-center">
+                <span class="text-gray-400 text-sm">MRR</span>
+                <span class="font-700 text-gold-500 text-xl">R$ 84.000</span>
+              </div>
+              <div class="flex justify-between items-center mt-2">
+                <span class="text-gray-400 text-sm">ARR</span>
+                <span class="font-700 text-white text-lg">R$ 1.008.000</span>
+              </div>
+            </div>
+          </div>
+          <div class="w-full bg-navy-800 rounded-full h-2">
+            <div class="bg-gold-500 h-2 rounded-full" style="width: 57%"></div>
+          </div>
+          <div class="text-gray-400 text-xs mt-2 font-500">Breakeven do R$ 1M ARR</div>
+        </div>
+
+        <!-- Otimista -->
+        <div class="bg-navy-700/40 border border-white/10 rounded-2xl p-8">
+          <div class="text-gray-400 text-sm font-500 uppercase tracking-wider mb-6">Cenário Otimista</div>
+          <div class="space-y-4 mb-8">
+            <div class="flex justify-between items-center">
+              <span class="text-gray-400 text-sm">Total de clientes</span>
+              <span class="font-700 text-white">25</span>
+            </div>
+            <div class="flex justify-between items-center text-sm">
+              <span class="text-gray-400">Mix</span>
+              <span class="text-gray-300">8E + 12C + 5P</span>
+            </div>
+            <div class="border-t border-white/10 pt-4">
+              <div class="flex justify-between items-center">
+                <span class="text-gray-400 text-sm">MRR</span>
+                <span class="font-700 text-emerald-400 text-xl">R$ 146.000</span>
+              </div>
+              <div class="flex justify-between items-center mt-2">
+                <span class="text-gray-400 text-sm">ARR</span>
+                <span class="font-700 text-white text-lg">R$ 1.752.000</span>
+              </div>
+            </div>
+          </div>
+          <div class="w-full bg-navy-800 rounded-full h-2">
+            <div class="bg-emerald-500 h-2 rounded-full" style="width: 100%"></div>
+          </div>
+          <div class="text-gray-500 text-xs mt-2">E=Essencial · C=Crescimento · P=Premium</div>
+        </div>
+      </div>
+
+      <div class="bg-navy-700/30 border border-white/5 rounded-2xl p-8 text-center">
+        <p class="text-gray-300 text-lg max-w-3xl mx-auto">
+          <span class="text-white font-600">Clínica que fatura R$ 200k/mês deveria investir R$ 16–20k em marketing.</span>
+          A maioria investe menos de 5%. <span class="text-gold-500">A Pulso ajuda você a fazer mais com o investimento certo.</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section id="faq" class="bg-navy-950 py-24">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <div class="inline-block tag rounded-full px-4 py-1.5 mb-4">
+          <span class="text-azure-300 text-sm font-500 uppercase tracking-wider">FAQ</span>
+        </div>
+        <h2 class="font-display font-700 text-4xl lg:text-5xl mb-4">
+          Perguntas <span class="gradient-text">frequentes</span>
+        </h2>
+      </div>
+
+      <div class="space-y-3" id="faq-list">
+
+        <details class="bg-navy-700/40 border border-white/10 rounded-2xl overflow-hidden group">
+          <summary class="flex items-center justify-between p-6 cursor-pointer list-none hover:bg-white/5 transition-colors">
+            <span class="font-600 text-white text-base pr-4">Preciso contratar por quanto tempo mínimo?</span>
+            <svg class="w-5 h-5 text-azure-400 flex-shrink-0 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <div class="px-6 pb-6 text-gray-400 text-sm leading-relaxed border-t border-white/5 pt-4">
+            Trabalhamos com contratos mínimos de 3 meses. Esse é o tempo necessário para ver resultados consistentes em tráfego, posicionamento e geração de pacientes. Resultados de marketing médico sustentável levam tempo — desconfiamos de quem promete resultados em 30 dias.
+          </div>
+        </details>
+
+        <details class="bg-navy-700/40 border border-white/10 rounded-2xl overflow-hidden group">
+          <summary class="flex items-center justify-between p-6 cursor-pointer list-none hover:bg-white/5 transition-colors">
+            <span class="font-600 text-white text-base pr-4">O investimento em mídia (Google Ads, Meta Ads) está incluso nos planos?</span>
+            <svg class="w-5 h-5 text-azure-400 flex-shrink-0 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <div class="px-6 pb-6 text-gray-400 text-sm leading-relaxed border-t border-white/5 pt-4">
+            Não. Os nossos planos cobrem a <strong class="text-gray-200">gestão das campanhas</strong> (estratégia, criação, otimização e relatórios). O investimento em mídia — ou seja, o dinheiro que vai para o Google e Meta — é pago diretamente pela clínica. Mantemos total transparência: você vê exatamente onde cada real está sendo investido.
+          </div>
+        </details>
+
+        <details class="bg-navy-700/40 border border-white/10 rounded-2xl overflow-hidden group">
+          <summary class="flex items-center justify-between p-6 cursor-pointer list-none hover:bg-white/5 transition-colors">
+            <span class="font-600 text-white text-base pr-4">Como vocês garantem que o conteúdo está dentro das normas do CFM?</span>
+            <svg class="w-5 h-5 text-azure-400 flex-shrink-0 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <div class="px-6 pb-6 text-gray-400 text-sm leading-relaxed border-t border-white/5 pt-4">
+            Nossa equipe é treinada especificamente nas <strong class="text-gray-200">Resoluções CFM nº 2.336/2023</strong> e demais normas de publicidade médica. Todo conteúdo passa por revisão antes de publicação: sem "o melhor médico de Brasília", sem antes-e-depois de procedimentos, sem promessas de resultado. Você fica protegido e a sua reputação profissional intacta.
+          </div>
+        </details>
+
+        <details class="bg-navy-700/40 border border-white/10 rounded-2xl overflow-hidden group">
+          <summary class="flex items-center justify-between p-6 cursor-pointer list-none hover:bg-white/5 transition-colors">
+            <span class="font-600 text-white text-base pr-4">Quero apenas um serviço específico. É possível?</span>
+            <svg class="w-5 h-5 text-azure-400 flex-shrink-0 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <div class="px-6 pb-6 text-gray-400 text-sm leading-relaxed border-t border-white/5 pt-4">
+            Sim. Oferecemos serviços avulsos como Diagnóstico Estratégico (R$ 3.500), consultoria por hora (R$ 350/h), projetos de automação e sites premium. Se você ainda não está pronto para um retainer mensal, começar com um diagnóstico é uma excelente forma de entender o potencial da sua clínica sem compromisso.
+          </div>
+        </details>
+
+        <details class="bg-navy-700/40 border border-white/10 rounded-2xl overflow-hidden group">
+          <summary class="flex items-center justify-between p-6 cursor-pointer list-none hover:bg-white/5 transition-colors">
+            <span class="font-600 text-white text-base pr-4">Como funciona o setup inicial?</span>
+            <svg class="w-5 h-5 text-azure-400 flex-shrink-0 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <div class="px-6 pb-6 text-gray-400 text-sm leading-relaxed border-t border-white/5 pt-4">
+            Após assinar o contrato, iniciamos com um <strong class="text-gray-200">diagnóstico estratégico completo</strong>: análise da clínica, concorrência, público-alvo e oportunidades. Em seguida, fazemos o setup de contas, identidade visual (se necessário), landing pages e automações — conforme o plano escolhido. Todo o processo leva de 2 a 3 semanas. As campanhas só são lançadas quando tudo está 100% configurado e aprovado por você.
+          </div>
+        </details>
+
+        <details class="bg-navy-700/40 border border-white/10 rounded-2xl overflow-hidden group">
+          <summary class="flex items-center justify-between p-6 cursor-pointer list-none hover:bg-white/5 transition-colors">
+            <span class="font-600 text-white text-base pr-4">O que diferencia a Pulso de agências genéricas que "atendem médicos"?</span>
+            <svg class="w-5 h-5 text-azure-400 flex-shrink-0 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <div class="px-6 pb-6 text-gray-400 text-sm leading-relaxed border-t border-white/5 pt-4">
+            Três coisas concretas: <strong class="text-gray-200">(1) IA nativa na operação</strong> — não como buzzword, mas como ferramenta real que nos permite ser mais ágeis e entregar mais com o mesmo custo; <strong class="text-gray-200">(2) especialização real em saúde</strong> — conhecemos as normas do CFM, a linguagem do médico e as dores do paciente particular; <strong class="text-gray-200">(3) relacionamento local</strong> — 20 anos de rede médica em Brasília não se compra com anúncios. Você fala com quem conhece o seu mercado.
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="divider-gold max-w-6xl mx-auto"></div>
+
+  <!-- ===== CTA FINAL ===== -->
+  <section id="contato" class="bg-navy-950 py-24 relative overflow-hidden">
+    <div class="absolute inset-0 bg-grid-pattern bg-grid opacity-20 pointer-events-none"></div>
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full bg-azure-600/10 blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+      <div class="inline-block tag rounded-full px-4 py-1.5 mb-6">
+        <span class="text-azure-300 text-sm font-500 uppercase tracking-wider">Próximo passo</span>
+      </div>
+
+      <h2 class="font-display font-700 text-4xl lg:text-5xl mb-6">
+        Pronto para atrair mais<br/>
+        <span class="gradient-text">pacientes particulares?</span>
+      </h2>
+
+      <p class="text-gray-300 text-xl leading-relaxed mb-10 font-300">
+        Agende uma reunião gratuita de diagnóstico. Em 45 minutos, mostramos o potencial de crescimento
+        da sua clínica e qual plano faz mais sentido para o seu momento.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+        <a
+          href="https://wa.me/5561999999999?text=Ol%C3%A1%2C%20vim%20pela%20LP%20da%20Pulso%20e%20gostaria%20de%20agendar%20uma%20reuni%C3%A3o%20gratuita."
+          class="btn-gold text-navy-900 font-700 px-10 py-4 rounded-xl text-lg flex items-center justify-center gap-3"
+          rel="noopener"
+        >
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Agendar Reunião Gratuita
+        </a>
+        <a href="mailto:contato@pulsomarketing.com.br" class="border border-white/20 text-white font-500 px-10 py-4 rounded-xl text-lg flex items-center justify-center gap-2 hover:border-white/40 transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          Enviar E-mail
+        </a>
+      </div>
+
+      <!-- Trust signals -->
+      <div class="flex flex-wrap gap-6 justify-center pt-8 border-t border-white/10">
+        <div class="flex items-center gap-2 text-gray-400 text-sm">
+          <svg class="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+          Reunião 100% gratuita e sem compromisso
+        </div>
+        <div class="flex items-center gap-2 text-gray-400 text-sm">
+          <svg class="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+          Diagnóstico personalizado para sua especialidade
+        </div>
+        <div class="flex items-center gap-2 text-gray-400 text-sm">
+          <svg class="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+          Brasília-DF · Presencial disponível
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="bg-navy-950 border-t border-white/5 py-12">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-azure-600 flex items-center justify-center">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2L15 8.5H22L16.5 13L18.5 20L12 16.5L5.5 20L7.5 13L2 8.5H9L12 2Z" fill="white"/></svg>
+          </div>
+          <div>
+            <div class="font-display font-700 text-white">Pulso</div>
+            <div class="text-gray-500 text-xs">Assessoria de Marketing Médico · Brasília-DF</div>
+          </div>
+        </div>
+        <div class="flex gap-8 text-gray-500 text-sm">
+          <a href="#planos" class="hover:text-gray-300 transition-colors">Planos</a>
+          <a href="#faq" class="hover:text-gray-300 transition-colors">FAQ</a>
+          <a href="#contato" class="hover:text-gray-300 transition-colors">Contato</a>
+        </div>
+        <div class="text-gray-600 text-xs text-center">
+          © 2026 Pulso Marketing Médico. Todos os direitos reservados.<br/>
+          Pesquisa de mercado: Abril 2026. Dados: Datafolha, oHub, CNES/DataSUS.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scroll + active nav highlight
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Intersection observer for fade-in animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.metric-card, .plan-card, .bg-navy-700\\/40').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
