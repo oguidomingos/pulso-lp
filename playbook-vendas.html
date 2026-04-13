@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pulso — Playbook de Vendas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #09090b;
+      --card: #18181b;
+      --border: #27272a;
+      --border-light: #3f3f46;
+      --text: #fafafa;
+      --text-muted: #a1a1aa;
+      --text-dim: #71717a;
+      --accent: #14b8a6;
+      --accent-bg: rgba(20,184,166,0.1);
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --success: #22c55e;
+      --font: 'Inter', system-ui, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.6; }
+    .page { max-width: 900px; margin: 0 auto; padding: 40px 32px; }
+
+    .header {
+      margin-bottom: 48px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+    .header-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--accent);
+      background: var(--accent-bg);
+      margin-bottom: 16px;
+    }
+    .header h1 {
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 8px;
+    }
+    .header p { font-size: 15px; color: var(--text-muted); }
+
+    .section { margin-bottom: 48px; }
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+    .card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .card p, .card li {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+    .card ul { list-style: none; padding: 0; }
+    .card li { padding: 6px 0; padding-left: 20px; position: relative; }
+    .card li::before {
+      content: '>';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .script-box {
+      background: rgba(20,184,166,0.05);
+      border: 1px solid rgba(20,184,166,0.15);
+      border-radius: 10px;
+      padding: 20px;
+      margin: 16px 0;
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--text);
+    }
+    .script-box .speaker {
+      font-weight: 700;
+      color: var(--accent);
+      display: block;
+      margin-bottom: 4px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .script-box .line { margin-bottom: 16px; }
+    .script-box .line:last-child { margin-bottom: 0; }
+    .script-box em { color: var(--text-dim); font-style: italic; }
+
+    .objection-grid {
+      display: grid;
+      gap: 12px;
+    }
+    .objection-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+    }
+    .objection-q {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--warning);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .objection-a {
+      font-size: 13px;
+      color: var(--text-muted);
+      padding-left: 24px;
+      line-height: 1.6;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .tag-green { background: rgba(34,197,94,0.12); color: #4ade80; }
+    .tag-yellow { background: rgba(245,158,11,0.12); color: #fbbf24; }
+    .tag-red { background: rgba(239,68,68,0.12); color: #f87171; }
+    .tag-blue { background: rgba(59,130,246,0.12); color: #60a5fa; }
+
+    .follow-up {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 0;
+    }
+    .follow-day {
+      padding: 16px 0;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent);
+      border-right: 2px solid var(--border);
+      padding-right: 16px;
+      text-align: right;
+    }
+    .follow-content {
+      padding: 16px 0 16px 16px;
+      font-size: 14px;
+      color: var(--text-muted);
+      border-bottom: 1px solid rgba(39,39,42,0.5);
+    }
+    .follow-content:last-child { border-bottom: none; }
+    .follow-content strong { color: var(--text); }
+
+    .tip-box {
+      background: rgba(245,158,11,0.06);
+      border-left: 3px solid var(--warning);
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+      margin: 16px 0;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .tip-box strong { color: var(--warning); }
+
+    .footer {
+      text-align: center;
+      padding: 24px 0;
+      font-size: 12px;
+      color: var(--text-dim);
+      border-top: 1px solid var(--border);
+      margin-top: 40px;
+    }
+
+    @media (max-width: 640px) {
+      .header h1 { font-size: 28px; }
+      .follow-up { grid-template-columns: 60px 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <header class="header">
+      <div class="header-badge">Documento Interno</div>
+      <h1>Playbook de Vendas</h1>
+      <p>Guia completo para abordagem de medicos e fechamento de contas. Para uso de Eduardo Pai e time comercial.</p>
+    </header>
+
+    <!-- Pitch 30s -->
+    <div class="section">
+      <div class="section-label">Elevator Pitch</div>
+      <div class="section-title">Proposta de valor em 30 segundos</div>
+      <div class="script-box">
+        <div class="line">
+          <span class="speaker">Voce</span>
+          "Doutor, a gente trabalha exclusivamente com medicos. Nosso foco e um so: fazer seu telefone tocar com pacientes novos. A gente monta sua presenca no Google em 7 dias — landing page, Google Ads, Google Meu Negocio — e voce comeca a receber leads na primeira semana. Sem contrato de fidelidade, sem enrolacao. Investimento a partir de R$X por mes."
+        </div>
+      </div>
+      <div class="tip-box">
+        <strong>Dica:</strong> Adapte o pitch para a especialidade do medico. Ex: "ortopedista em Brasilia que aceita convenio" ou "dermatologista particular na Asa Sul". Quanto mais especifico, mais o medico se identifica.
+      </div>
+    </div>
+
+    <!-- Script de abordagem -->
+    <div class="section">
+      <div class="section-label">Script</div>
+      <div class="section-title">Abordagem inicial (presencial ou WhatsApp)</div>
+
+      <div class="card">
+        <h3><span class="tag tag-green">Presencial</span> Contexto: indicacao</h3>
+        <div class="script-box">
+          <div class="line">
+            <span class="speaker">Voce</span>
+            "Doutor, prazer! Sou [nome], trabalho com a Pulso. O [nome de quem indicou] me falou muito bem do seu trabalho e comentou que voce ta querendo aumentar o movimento da clinica. A gente e especializado nisso — so atende medico. Posso te mostrar rapidinho como funciona?"
+          </div>
+          <div class="line">
+            <em>Espere a resposta. Se positivo:</em>
+          </div>
+          <div class="line">
+            <span class="speaker">Voce</span>
+            "Legal! A gente trabalha com Google Ads focado na sua especialidade. Quando alguem pesquisa 'ortopedista perto de mim' ou 'ortopedista que aceita [convenio]', a sua clinica aparece primeiro. Na primeira semana ja ta rodando. Posso te mandar um material rapidinho no WhatsApp com os numeros?"
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><span class="tag tag-blue">WhatsApp</span> Primeira mensagem</h3>
+        <div class="script-box">
+          <div class="line">
+            <span class="speaker">Mensagem 1</span>
+            "Boa tarde, Dr. [nome]! Aqui e [seu nome] da Pulso. O [quem indicou] comentou comigo sobre a sua clinica. A gente e especializado em marketing para medicos — nosso foco e fazer chegar paciente novo pra voce. Posso te mandar um material rapido mostrando como funciona?"
+          </div>
+          <div class="line">
+            <em>Se responder positivo, enviar o link do material comercial:</em>
+          </div>
+          <div class="line">
+            <span class="speaker">Mensagem 2</span>
+            "Perfeito, doutor! Aqui ta um resumo do que a gente faz: [link comercial.html]. Basicamente: Google Ads + landing page + Google Meu Negocio. Tudo pronto em 7 dias. Quer que eu te explique os numeros em uma ligacao rapida de 10 min?"
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Objecoes -->
+    <div class="section">
+      <div class="section-label">Objecoes</div>
+      <div class="section-title">Respostas para as 6 objecoes mais comuns</div>
+
+      <div class="objection-grid">
+        <div class="objection-item">
+          <div class="objection-q">&#9888; "Ja tentei marketing e nao funcionou"</div>
+          <div class="objection-a">
+            "Entendo, doutor. A maioria das agencias atende todo tipo de negocio — restaurante, loja, clinica, tudo junto. A gente so faz medico. Sabe aquela agencia que te atendeu? Provavelmente tava usando a mesma estrategia que usa pra pizzaria. A gente nao. Nosso Google Ads e montado especificamente pra sua especialidade, com palavras-chave que so a gente usa. E se nao der resultado, voce cancela — sem multa."
+          </div>
+        </div>
+        <div class="objection-item">
+          <div class="objection-q">&#9888; "Ta caro"</div>
+          <div class="objection-a">
+            "Entendo a preocupacao. Mas pensa comigo: com R$1.500 em ads, a gente estima trazer uns 3 pacientes novos por mes. Se cada consulta + retorno da R$800, ja sao R$2.400 de receita. Ou seja, pra cada R$1 investido, volta R$1,60 no minimo. E isso sem contar as indicacoes que esses pacientes vao fazer. O investimento se paga no primeiro mes."
+          </div>
+        </div>
+        <div class="objection-item">
+          <div class="objection-q">&#9888; "Nao tenho tempo pra isso"</div>
+          <div class="objection-a">
+            "Perfeito, doutor — e justamente por isso que a gente existe. Voce nao precisa fazer nada. A gente cuida de tudo: landing page, campanhas, Google Meu Negocio, ate o atendimento no WhatsApp com IA. Seu unico trabalho e atender o paciente que chegar."
+          </div>
+        </div>
+        <div class="objection-item">
+          <div class="objection-q">&#9888; "Preciso pensar / consultar meu socio"</div>
+          <div class="objection-a">
+            "Claro, sem pressao nenhuma. Posso te mandar o material por WhatsApp pra voce ver com calma? E se quiser, a gente faz uma ligacao rapida de 10 minutos com o seu socio tambem. Sem compromisso."
+          </div>
+        </div>
+        <div class="objection-item">
+          <div class="objection-q">&#9888; "Ja tenho redes sociais"</div>
+          <div class="objection-a">
+            "Otimo! Redes sociais sao excelentes pra autoridade. Mas quando o paciente tem dor, ele nao vai no Instagram — ele vai no Google. 'Ortopedista perto de mim', 'ortopedista que aceita Unimed'. E ai que a gente entra. Google Ads e a demanda ativa — o cara ja quer agendar. A rede social complementa, mas o Google e o que traz paciente de verdade."
+          </div>
+        </div>
+        <div class="objection-item">
+          <div class="objection-q">&#9888; "Quanto tempo demora pra ver resultado?"</div>
+          <div class="objection-a">
+            "Na primeira semana a campanha ja esta rodando. Os primeiros leads costumam chegar entre 7 e 14 dias. No primeiro mes a gente ja tem dados solidos pra otimizar. E a partir do segundo mes o resultado so melhora porque a gente refina as campanhas com base nos dados."
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Perfil ideal -->
+    <div class="section">
+      <div class="section-label">ICP</div>
+      <div class="section-title">Perfil ideal de cliente</div>
+      <div class="card">
+        <ul>
+          <li><strong>Especialidades que convertem bem no Google:</strong> Ortopedia, Urologia, Dermatologia, Oftalmologia, Odontologia, Fisioterapia, Psiquiatria</li>
+          <li><strong>Aceita convenio:</strong> Sim (aumenta volume de busca e conversao)</li>
+          <li><strong>Localizacao:</strong> Brasilia/DF (regiao de atuacao inicial)</li>
+          <li><strong>Investimento minimo:</strong> Disposto a investir a partir de R$X/mes em assessoria + midia</li>
+          <li><strong>Sem presenca digital:</strong> Quanto menos tiver, mais rapido o resultado</li>
+          <li><strong>Perfil pratico:</strong> Quer resultado, nao quer perder tempo com detalhes</li>
+        </ul>
+      </div>
+      <div class="tip-box">
+        <strong>Evitar:</strong> Neurologistas (CPC alto, conversao baixa), medicos que querem "pensar 2 meses", clinicas que ja tem agencia contratada (churn interno).
+      </div>
+    </div>
+
+    <!-- Follow-up -->
+    <div class="section">
+      <div class="section-label">Follow-up</div>
+      <div class="section-title">Sequencia de acompanhamento</div>
+      <div class="card">
+        <div class="follow-up">
+          <div class="follow-day">Dia 0</div>
+          <div class="follow-content"><strong>Primeiro contato.</strong> Apresentacao + envio do material comercial.</div>
+          <div class="follow-day">Dia 2</div>
+          <div class="follow-content"><strong>Follow-up leve.</strong> "Doutor, conseguiu ver o material? Posso esclarecer alguma duvida?"</div>
+          <div class="follow-day">Dia 5</div>
+          <div class="follow-content"><strong>Valor adicional.</strong> Enviar dado relevante: "Vi que na sua regiao o CPC pra ortopedista ta em R$4,50 — otimo pra comecar."</div>
+          <div class="follow-day">Dia 10</div>
+          <div class="follow-content"><strong>Ultima tentativa.</strong> "Doutor, fico a disposicao quando fizer sentido. Se precisar, e so chamar!" Nao insistir mais.</div>
+          <div class="follow-day">Dia 30</div>
+          <div class="follow-content"><strong>Reativacao.</strong> Mandar resultado de outro cliente (anonimizado): "Olha o resultado que a gente trouxe pra um ortopedista aqui em BSB em 30 dias."</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Metricas -->
+    <div class="section">
+      <div class="section-label">Metas</div>
+      <div class="section-title">KPIs comerciais semanais</div>
+      <div class="card">
+        <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:16px; text-align:center;">
+          <div>
+            <div style="font-size:28px; font-weight:800; color:var(--accent);">10</div>
+            <div style="font-size:12px; color:var(--text-dim);">Contatos/semana</div>
+          </div>
+          <div>
+            <div style="font-size:28px; font-weight:800; color:var(--warning);">4</div>
+            <div style="font-size:12px; color:var(--text-dim);">Conversas iniciadas</div>
+          </div>
+          <div>
+            <div style="font-size:28px; font-weight:800; color:var(--success);">2</div>
+            <div style="font-size:12px; color:var(--text-dim);">Reunioes agendadas</div>
+          </div>
+          <div>
+            <div style="font-size:28px; font-weight:800; color:#c4b5fd;">1</div>
+            <div style="font-size:12px; color:var(--text-dim);">Fechamento/mes</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <strong>PULSO</strong> &mdash; Playbook de Vendas v1.0 &bull; Documento interno &bull; Abril 2026
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pulso — Assessoria de Marketing para Clinicas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #fafaf9;
+      --card: #ffffff;
+      --border: #e7e5e4;
+      --text: #1c1917;
+      --text-muted: #57534e;
+      --text-dim: #a8a29e;
+      --accent: #0d9488;
+      --accent-light: #14b8a6;
+      --accent-bg: #f0fdfa;
+      --accent-border: #ccfbf1;
+      --gold: #d97706;
+      --gold-bg: #fffbeb;
+      --navy: #1e3a5f;
+      --navy-light: #2d5a8e;
+      --success: #16a34a;
+      --font: 'Inter', system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page { max-width: 800px; margin: 0 auto; padding: 40px 32px; }
+
+    /* Print styles */
+    @media print {
+      body { background: white; }
+      .page { padding: 20px; max-width: 100%; }
+      .no-print { display: none !important; }
+      .page-break { page-break-before: always; }
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 48px;
+      padding-bottom: 32px;
+      border-bottom: 2px solid var(--accent);
+    }
+    .header-badge {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--accent);
+      background: var(--accent-bg);
+      border: 1px solid var(--accent-border);
+      margin-bottom: 20px;
+    }
+    .header h1 {
+      font-size: 42px;
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      color: var(--navy);
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+    .header h1 span { color: var(--accent); }
+    .header-sub {
+      font-size: 18px;
+      color: var(--text-muted);
+      font-weight: 400;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    /* Sections */
+    .section { margin-bottom: 40px; }
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--navy);
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    /* Stats Row */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin: 32px 0;
+    }
+    .stat-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 16px;
+      text-align: center;
+    }
+    .stat-number {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: -1px;
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 6px;
+      font-weight: 500;
+    }
+
+    /* Value Prop */
+    .value-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 24px 0;
+    }
+    .value-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      transition: border-color 0.2s;
+    }
+    .value-card:hover { border-color: var(--accent-border); }
+    .value-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+    .value-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+    .value-card p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Process */
+    .process-list {
+      list-style: none;
+      counter-reset: process;
+    }
+    .process-item {
+      display: flex;
+      gap: 16px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: flex-start;
+    }
+    .process-item:last-child { border-bottom: none; }
+    .process-num {
+      counter-increment: process;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .process-content h4 {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .process-content p {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .process-tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      background: var(--accent-bg);
+      color: var(--accent);
+      margin-top: 6px;
+    }
+
+    /* Benchmark */
+    .benchmark-card {
+      background: linear-gradient(135deg, var(--navy), var(--navy-light));
+      border-radius: 16px;
+      padding: 32px;
+      color: white;
+      margin: 32px 0;
+    }
+    .benchmark-card h3 {
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+    .benchmark-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .bench-item {
+      background: rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 16px;
+      text-align: center;
+    }
+    .bench-value {
+      font-size: 28px;
+      font-weight: 800;
+      color: #5eead4;
+    }
+    .bench-label {
+      font-size: 12px;
+      color: rgba(255,255,255,0.7);
+      margin-top: 4px;
+    }
+
+    /* Differentials */
+    .diff-list {
+      list-style: none;
+    }
+    .diff-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .diff-item:last-child { border-bottom: none; }
+    .diff-check {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      background: var(--accent-bg);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .diff-text {
+      font-size: 14px;
+    }
+    .diff-text strong { color: var(--text); }
+    .diff-text span { color: var(--text-muted); }
+
+    /* CTA */
+    .cta-section {
+      background: var(--accent-bg);
+      border: 2px solid var(--accent-border);
+      border-radius: 16px;
+      padding: 40px;
+      text-align: center;
+      margin: 40px 0;
+    }
+    .cta-section h3 {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+    .cta-section p {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 500px;
+      margin: 0 auto 24px;
+    }
+    .cta-button {
+      display: inline-block;
+      padding: 14px 32px;
+      background: var(--accent);
+      color: white;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .cta-button:hover { background: var(--accent-light); }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 24px 0;
+      font-size: 12px;
+      color: var(--text-dim);
+      border-top: 1px solid var(--border);
+      margin-top: 40px;
+    }
+
+    /* ROI Calculator */
+    .roi-card {
+      background: var(--gold-bg);
+      border: 1px solid #fde68a;
+      border-radius: 12px;
+      padding: 24px;
+      margin: 24px 0;
+    }
+    .roi-card h4 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+    .roi-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      font-size: 14px;
+      border-bottom: 1px solid rgba(217,119,6,0.1);
+    }
+    .roi-row:last-child { border-bottom: none; }
+    .roi-row .label { color: var(--text-muted); }
+    .roi-row .value { font-weight: 700; color: var(--text); }
+    .roi-total {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 2px solid var(--gold);
+      display: flex;
+      justify-content: space-between;
+      font-size: 18px;
+      font-weight: 800;
+    }
+    .roi-total .value { color: var(--success); }
+
+    @media (max-width: 640px) {
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+      .value-grid { grid-template-columns: 1fr; }
+      .benchmark-grid { grid-template-columns: 1fr; }
+      .header h1 { font-size: 32px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="header-badge">Assessoria Especializada</div>
+      <h1>Sua clinica no <span>Google</span>,<br>seus pacientes no consultorio.</h1>
+      <p class="header-sub">Assessoria de marketing digital especializada em clinicas e consultorios medicos.</p>
+    </header>
+
+    <!-- Stats -->
+    <div class="stats-row">
+      <div class="stat-box">
+        <div class="stat-number">72%</div>
+        <div class="stat-label">dos pacientes buscam medico no Google</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">5-8x</div>
+        <div class="stat-label">ROI medio em Google Ads para clinicas</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">R$32</div>
+        <div class="stat-label">custo medio por lead qualificado</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">&lt;7</div>
+        <div class="stat-label">dias para primeira campanha rodar</div>
+      </div>
+    </div>
+
+    <!-- O Problema -->
+    <div class="section">
+      <div class="section-label">O Problema</div>
+      <div class="section-title">Medicos excelentes que ninguem encontra online.</div>
+      <p style="font-size:15px; color:var(--text-muted); max-width:650px;">
+        Voce atende com excelencia, mas seus pacientes te encontram por acaso. Enquanto isso, clinicas com marketing ativo lotam a agenda — mesmo com servico inferior. A diferenca? Presenca digital estrategica.
+      </p>
+    </div>
+
+    <!-- Servicos -->
+    <div class="section">
+      <div class="section-label">O que entregamos</div>
+      <div class="section-title">5 frentes integradas de resultado.</div>
+      <div class="value-grid">
+        <div class="value-card">
+          <div class="value-icon" style="background:var(--accent-bg);">&#128269;</div>
+          <h3>Google Ads</h3>
+          <p>Campanhas de busca para sua especialidade. Pacientes que ja estao procurando voce — a gente coloca sua clinica na frente.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon" style="background:#ede9fe;">&#128241;</div>
+          <h3>Meta Ads</h3>
+          <p>Anuncios no Instagram e Facebook. Criativos que geram desejo e autoridade, com segmentacao por regiao e perfil.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon" style="background:#fef3c7;">&#127912;</div>
+          <h3>Social Media</h3>
+          <p>Gestao do Instagram: vitrine profissional, conteudo estrategico, Reels e stories que posicionam voce como referencia.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon" style="background:#fee2e2;">&#129302;</div>
+          <h3>Automacao Comercial</h3>
+          <p>Atendimento inteligente no WhatsApp com IA. Agendamento automatico, respostas instantaneas, CRM integrado.</p>
+        </div>
+      </div>
+      <div class="value-card" style="margin-top:16px;">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <div class="value-icon" style="background:#ecfdf5; margin-bottom:0;">&#127760;</div>
+          <div>
+            <h3 style="margin-bottom:2px;">SEO + Google Meu Negocio</h3>
+            <p style="font-size:13px; color:var(--text-muted);">Seu perfil otimizado no Google Maps. Quando alguem busca sua especialidade na regiao, voce aparece primeiro — organicamente.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Benchmarks -->
+    <div class="benchmark-card">
+      <h3>Benchmarks reais do setor medico</h3>
+      <div class="benchmark-grid">
+        <div class="bench-item">
+          <div class="bench-value">R$5,64</div>
+          <div class="bench-label">CPC medio (Google Ads saude)</div>
+        </div>
+        <div class="bench-item">
+          <div class="bench-value">3.27%</div>
+          <div class="bench-label">CTR medio em buscas medicas</div>
+        </div>
+        <div class="bench-item">
+          <div class="bench-value">2.6%</div>
+          <div class="bench-label">Taxa de conversao (lead)</div>
+        </div>
+      </div>
+      <p style="font-size:12px; color:rgba(255,255,255,0.5); margin-top:16px; text-align:center;">
+        Fonte: LocaliQ Healthcare Benchmarks 2026 &bull; Evolve Healthcare Marketing
+      </p>
+    </div>
+
+    <!-- ROI Example -->
+    <div class="section">
+      <div class="section-label">Simulacao</div>
+      <div class="section-title">ROI real: ortopedista em Brasilia.</div>
+      <div class="roi-card">
+        <h4>&#128200; Projecao mensal (investimento R$1.500 em ads)</h4>
+        <div class="roi-row"><span class="label">Investimento em midia</span><span class="value">R$ 1.500</span></div>
+        <div class="roi-row"><span class="label">Cliques estimados (CPC R$5)</span><span class="value">~300 cliques</span></div>
+        <div class="roi-row"><span class="label">Leads estimados (conv. 2.6%)</span><span class="value">~8 leads</span></div>
+        <div class="roi-row"><span class="label">Pacientes fechados (taxa 40%)</span><span class="value">~3 pacientes</span></div>
+        <div class="roi-row"><span class="label">Ticket medio consulta + retorno</span><span class="value">R$ 800</span></div>
+        <div class="roi-total">
+          <span class="label">Receita gerada</span>
+          <span class="value">R$ 2.400+</span>
+        </div>
+      </div>
+      <p style="font-size:12px; color:var(--text-dim); margin-top:8px;">
+        * Simulacao conservadora. Resultados reais variam por especialidade, regiao e convenios aceitos. Nao inclui indicacoes e retornos futuros.
+      </p>
+    </div>
+
+    <!-- Process -->
+    <div class="section">
+      <div class="section-label">Como funciona</div>
+      <div class="section-title">Do zero a primeira campanha em 7 dias.</div>
+      <ul class="process-list">
+        <li class="process-item">
+          <div class="process-num">1</div>
+          <div class="process-content">
+            <h4>Onboarding</h4>
+            <p>Reuniao para entender sua especialidade, servicos, precos, convenios e locais de atendimento.</p>
+            <span class="process-tag">Dia 1</span>
+          </div>
+        </li>
+        <li class="process-item">
+          <div class="process-num">2</div>
+          <div class="process-content">
+            <h4>Setup digital</h4>
+            <p>Criamos seu Google Meu Negocio, landing page de conversao e configuramos as campanhas.</p>
+            <span class="process-tag">Dias 2-5</span>
+          </div>
+        </li>
+        <li class="process-item">
+          <div class="process-num">3</div>
+          <div class="process-content">
+            <h4>Campanhas no ar</h4>
+            <p>Google Ads rodando com palavras-chave da sua especialidade. Pacientes comecam a chegar.</p>
+            <span class="process-tag">Dia 7</span>
+          </div>
+        </li>
+        <li class="process-item">
+          <div class="process-num">4</div>
+          <div class="process-content">
+            <h4>Otimizacao continua</h4>
+            <p>Relatorios semanais, ajuste de campanhas, expansao para Meta Ads e Social Media.</p>
+            <span class="process-tag">Semana 2+</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Diferenciais -->
+    <div class="section">
+      <div class="section-label">Por que a Pulso</div>
+      <div class="section-title">O que nos diferencia de agencias genericas.</div>
+      <ul class="diff-list">
+        <li class="diff-item">
+          <div class="diff-check">&#10003;</div>
+          <div class="diff-text"><strong>Especializacao em saude.</strong> <span>Nao atendemos restaurantes, lojas e clinicas ao mesmo tempo. Nosso foco e 100% medico.</span></div>
+        </li>
+        <li class="diff-item">
+          <div class="diff-check">&#10003;</div>
+          <div class="diff-text"><strong>Resultado em 7 dias.</strong> <span>Nada de 60 dias de setup. Sua campanha roda na primeira semana.</span></div>
+        </li>
+        <li class="diff-item">
+          <div class="diff-check">&#10003;</div>
+          <div class="diff-text"><strong>Resposta em 30 minutos.</strong> <span>Nosso tempo medio de resposta. Sem ficar dias esperando retorno.</span></div>
+        </li>
+        <li class="diff-item">
+          <div class="diff-check">&#10003;</div>
+          <div class="diff-text"><strong>Relatorios que voce entende.</strong> <span>Sem jargao tecnico. Relatorios semanais em linguagem clara: quantos leads, quanto custou, qual o retorno.</span></div>
+        </li>
+        <li class="diff-item">
+          <div class="diff-check">&#10003;</div>
+          <div class="diff-text"><strong>Tecnologia de ponta.</strong> <span>Automacao com IA para atendimento no WhatsApp, agendamento e CRM — sem custo extra.</span></div>
+        </li>
+        <li class="diff-item">
+          <div class="diff-check">&#10003;</div>
+          <div class="diff-text"><strong>Sem fidelidade.</strong> <span>Voce fica porque quer, nao porque assinou um contrato de 12 meses.</span></div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-section">
+      <h3>Pronto para lotar sua agenda?</h3>
+      <p>Agende uma conversa sem compromisso. Em 30 minutos, mostramos exatamente como podemos trazer mais pacientes para sua clinica.</p>
+      <a href="https://wa.me/5561999999999?text=Oi!%20Quero%20saber%20mais%20sobre%20a%20assessoria%20da%20Pulso." class="cta-button">Falar com a Pulso no WhatsApp</a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <strong>PULSO</strong> &mdash; Assessoria de Marketing para Clinicas<br>
+      Brasilia, DF &bull; contato@pulso.digital
+    </footer>
+
+  </div>
+</body>
+</html>
