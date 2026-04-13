@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pulso — Painel de Reuniao | 11 Abr 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #09090b;
+      --card: #18181b;
+      --card-hover: #1f1f23;
+      --border: #27272a;
+      --border-light: #3f3f46;
+      --text: #fafafa;
+      --text-muted: #a1a1aa;
+      --text-dim: #71717a;
+      --accent: #22c55e;
+      --accent-dim: #16a34a;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --info: #3b82f6;
+      --purple: #a78bfa;
+      --font: 'Inter', system-ui, -apple-system, sans-serif;
+      --radius: 12px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* Header */
+    .header {
+      padding: 32px 0 24px;
+      border-bottom: 1px solid var(--border);
+    }
+    .header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .logo {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, var(--accent), #4ade80);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+    .badge-outline {
+      border: 1px solid var(--border-light);
+      color: var(--text-muted);
+    }
+    .badge-accent {
+      background: rgba(34, 197, 94, 0.12);
+      color: var(--accent);
+      border: 1px solid rgba(34, 197, 94, 0.2);
+    }
+    .header-meta {
+      margin-top: 12px;
+      font-size: 14px;
+      color: var(--text-dim);
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin: 32px 0;
+    }
+    .stat-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      transition: border-color 0.2s;
+    }
+    .stat-card:hover { border-color: var(--border-light); }
+    .stat-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-dim);
+      margin-bottom: 8px;
+    }
+    .stat-value {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -1px;
+    }
+    .stat-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* Sections */
+    .section {
+      margin: 40px 0;
+    }
+    .section-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-title .icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 16px;
+      transition: border-color 0.2s;
+    }
+    .card:hover { border-color: var(--border-light); }
+
+    /* Team Grid */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 16px;
+    }
+    .team-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      transition: border-color 0.2s;
+    }
+    .team-card:hover { border-color: var(--border-light); }
+    .team-name {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .team-role {
+      font-size: 13px;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .team-traits {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+    .trait {
+      padding: 4px 10px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 500;
+    }
+    .trait-green { background: rgba(34,197,94,0.12); color: #4ade80; }
+    .trait-yellow { background: rgba(245,158,11,0.12); color: #fbbf24; }
+    .trait-red { background: rgba(239,68,68,0.12); color: #f87171; }
+    .trait-blue { background: rgba(59,130,246,0.12); color: #60a5fa; }
+    .trait-purple { background: rgba(167,139,250,0.12); color: #c4b5fd; }
+    .team-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Action Items */
+    .action-list { list-style: none; }
+    .action-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .action-item:last-child { border-bottom: none; }
+    .action-priority {
+      flex-shrink: 0;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin-top: 8px;
+    }
+    .priority-max { background: var(--danger); box-shadow: 0 0 8px rgba(239,68,68,0.4); }
+    .priority-high { background: var(--warning); box-shadow: 0 0 8px rgba(245,158,11,0.3); }
+    .priority-med { background: var(--info); }
+    .action-content { flex: 1; }
+    .action-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .action-meta {
+      font-size: 12px;
+      color: var(--text-dim);
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* Timeline */
+    .timeline {
+      position: relative;
+      padding-left: 24px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 4px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--border);
+    }
+    .timeline-item {
+      position: relative;
+      padding-bottom: 24px;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -24px;
+      top: 6px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 2px solid var(--accent);
+      background: var(--bg);
+    }
+    .timeline-item.future::before {
+      border-color: var(--border-light);
+    }
+    .timeline-date {
+      font-size: 12px;
+      color: var(--accent);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+    .timeline-item.future .timeline-date {
+      color: var(--text-dim);
+    }
+    .timeline-title {
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .timeline-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* Checklist */
+    .checklist { list-style: none; }
+    .checklist li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 0;
+      font-size: 14px;
+      border-bottom: 1px solid rgba(39,39,42,0.5);
+    }
+    .checklist li:last-child { border-bottom: none; }
+    .check {
+      width: 20px;
+      height: 20px;
+      border-radius: 6px;
+      border: 2px solid var(--border-light);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+    }
+    .check.done {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--bg);
+    }
+
+    /* Risk Table */
+    .risk-grid {
+      display: grid;
+      gap: 12px;
+    }
+    .risk-item {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      gap: 16px;
+      align-items: center;
+      padding: 16px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-size: 14px;
+    }
+    .risk-label { font-weight: 500; }
+    .risk-level {
+      padding: 4px 12px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .level-high { background: rgba(239,68,68,0.12); color: #f87171; }
+    .level-med { background: rgba(245,158,11,0.12); color: #fbbf24; }
+
+    /* Footer */
+    .footer {
+      margin-top: 60px;
+      padding: 24px 0;
+      border-top: 1px solid var(--border);
+      font-size: 12px;
+      color: var(--text-dim);
+      text-align: center;
+    }
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0;
+      overflow-x: auto;
+    }
+    .tab {
+      padding: 10px 20px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-dim);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+      white-space: nowrap;
+      background: none;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      font-family: var(--font);
+    }
+    .tab:hover { color: var(--text-muted); }
+    .tab.active {
+      color: var(--text);
+      border-bottom-color: var(--accent);
+    }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    /* Two Column */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 768px) {
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .team-grid { grid-template-columns: 1fr; }
+      .two-col { grid-template-columns: 1fr; }
+      .risk-item { grid-template-columns: 1fr; gap: 8px; }
+      .header-top { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-top">
+        <div>
+          <div class="logo">PULSO</div>
+          <div style="font-size:14px; color:var(--text-muted); margin-top:4px;">Painel Estrategico &mdash; Reuniao de Planejamento</div>
+        </div>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <span class="badge badge-accent">&#9679; Semana 1</span>
+          <span class="badge badge-outline">11 Abr 2026</span>
+          <span class="badge badge-outline">3h 25min</span>
+        </div>
+      </div>
+      <div class="header-meta">
+        Participantes: Calil Martins &bull; Guilherme Domingos &bull; Sergio Crispim &bull; Altair Araujo &bull; Edu Wayne
+      </div>
+    </header>
+
+    <!-- Stats -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-label">Acionaveis</div>
+        <div class="stat-value" style="color:var(--accent);">22</div>
+        <div class="stat-sub">action items identificados</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Prioridade Maxima</div>
+        <div class="stat-value" style="color:#f87171;">3</div>
+        <div class="stat-sub">entregas criticas esta semana</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Meta Anual</div>
+        <div class="stat-value" style="color:var(--warning);">60</div>
+        <div class="stat-sub">contas ativas ate Dez/26</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">MRR Target</div>
+        <div class="stat-value" style="color:var(--purple);">180k</div>
+        <div class="stat-sub">receita recorrente mensal</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Clientes Atuais</div>
+        <div class="stat-value">1</div>
+        <div class="stat-sub">Dr. Rafael (ortopedia)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Socios</div>
+        <div class="stat-value">5</div>
+        <div class="stat-sub">+ 2 investidores</div>
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <button class="tab active" onclick="showTab('actions')">Acionaveis</button>
+      <button class="tab" onclick="showTab('team')">Time</button>
+      <button class="tab" onclick="showTab('goals')">Metas</button>
+      <button class="tab" onclick="showTab('roadmap')">Roadmap</button>
+      <button class="tab" onclick="showTab('risks')">Riscos</button>
+    </div>
+
+    <!-- Tab: Actions -->
+    <div id="actions" class="tab-content active">
+      <div class="section">
+        <div class="section-title">
+          <span class="icon" style="background:rgba(239,68,68,0.12);">&#128308;</span>
+          Prioridade Maxima
+        </div>
+        <div class="card">
+          <ul class="action-list">
+            <li class="action-item">
+              <div class="action-priority priority-max"></div>
+              <div class="action-content">
+                <div class="action-title">Onboarding do Dr. Rafael</div>
+                <div class="action-meta">
+                  <span>Calil + Eduardo Pai</span>
+                  <span>15/abr (terca)</span>
+                  <span style="color:var(--warning);">Agendar</span>
+                </div>
+              </div>
+            </li>
+            <li class="action-item">
+              <div class="action-priority priority-max"></div>
+              <div class="action-content">
+                <div class="action-title">Material comercial para Eduardo Pai</div>
+                <div class="action-meta">
+                  <span>Altair + Edu</span>
+                  <span>14/abr (segunda)</span>
+                  <span style="color:var(--warning);">Criar flyers + apresentacao</span>
+                </div>
+              </div>
+            </li>
+            <li class="action-item">
+              <div class="action-priority priority-max"></div>
+              <div class="action-content">
+                <div class="action-title">Definir sala/coworking</div>
+                <div class="action-meta">
+                  <span>Edu + Franks</span>
+                  <span>14-16/abr</span>
+                  <span style="color:var(--warning);">Visitar Def Plaza</span>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">
+          <span class="icon" style="background:rgba(245,158,11,0.12);">&#128992;</span>
+          Prioridade Alta
+        </div>
+        <div class="card">
+          <ul class="action-list">
+            <li class="action-item">
+              <div class="action-priority priority-high"></div>
+              <div class="action-content">
+                <div class="action-title">LP provisoria para Dr. Rafael</div>
+                <div class="action-meta"><span>Guilherme</span><span>Ate 16/abr</span></div>
+              </div>
+            </li>
+            <li class="action-item">
+              <div class="action-priority priority-high"></div>
+              <div class="action-content">
+                <div class="action-title">Google Ads (keywords-only)</div>
+                <div class="action-meta"><span>Calil + Sergio</span><span>Apos onboarding</span></div>
+              </div>
+            </li>
+            <li class="action-item">
+              <div class="action-priority priority-high"></div>
+              <div class="action-content">
+                <div class="action-title">Google Meu Negocio do Dr. Rafael</div>
+                <div class="action-meta"><span>Calil</span><span>Apos onboarding</span></div>
+              </div>
+            </li>
+            <li class="action-item">
+              <div class="action-priority priority-high"></div>
+              <div class="action-content">
+                <div class="action-title">Playbooks comerciais</div>
+                <div class="action-meta"><span>Altair</span><span>16/abr</span></div>
+              </div>
+            </li>
+            <li class="action-item">
+              <div class="action-priority priority-high"></div>
+              <div class="action-content">
+                <div class="action-title">Precificacao dos servicos Pulso</div>
+                <div class="action-meta"><span>Sergio + Altair</span><span>16/abr</span></div>
+              </div>
+            </li>
+            <li class="action-item">
+              <div class="action-priority priority-high"></div>
+              <div class="action-content">
+                <div class="action-title">Meta: 10 medicos/semana via Eduardo Pai</div>
+                <div class="action-meta"><span>Edu</span><span>Iniciar 14/abr</span></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">
+          <span class="icon" style="background:rgba(59,130,246,0.12);">&#128309;</span>
+          Prioridade Media
+        </div>
+        <div class="card">
+          <ul class="action-list">
+            <li class="action-item">
+              <div class="action-priority priority-med"></div>
+              <div class="action-content">
+                <div class="action-title">Reviver WhatsApp AI (Evolution API)</div>
+                <div class="action-meta"><span>Guilherme</span><span>Fim de abril</span></div>
+              </div>
+            </li>
+            <li class="action-item">
+              <div class="action-priority priority-med"></div>
+              <div class="action-content">
+                <div class="action-title">Roteiros de Reels + referencias branding</div>
+                <div class="action-meta"><span>Edu + Altair</span><span>16/abr</span></div>
+              </div>
+            </li>
+            <li class="action-item">
+              <div class="action-priority priority-med"></div>
+              <div class="action-content">
+                <div class="action-title">Logo provisorio (iniciais do doutor)</div>
+                <div class="action-meta"><span>Edu</span><span>15/abr</span></div>
+              </div>
+            </li>
+            <li class="action-item">
+              <div class="action-priority priority-med"></div>
+              <div class="action-content">
+                <div class="action-title">Discord da Pulso (geral + resenha)</div>
+                <div class="action-meta"><span>Guilherme</span><span>14/abr</span></div>
+              </div>
+            </li>
+            <li class="action-item">
+              <div class="action-priority priority-med"></div>
+              <div class="action-content">
+                <div class="action-title">Integrar Notion do Altair no Claude</div>
+                <div class="action-meta"><span>Guilherme</span><span>Esta semana</span></div>
+              </div>
+            </li>
+            <li class="action-item">
+              <div class="action-priority priority-med"></div>
+              <div class="action-content">
+                <div class="action-title">Estruturar ClickUp/Tasks (ciclos Scrum)</div>
+                <div class="action-meta"><span>Guilherme</span><span>Esta semana</span></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab: Team -->
+    <div id="team" class="tab-content">
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-name">Calil Martins</div>
+          <div class="team-role">Gestor de Trafego &bull; Google Ads &bull; CS</div>
+          <div class="team-traits">
+            <span class="trait trait-green">Google Ads Expert</span>
+            <span class="trait trait-green">Tranquilo</span>
+            <span class="trait trait-blue">Pragmatico</span>
+            <span class="trait trait-yellow">Comunicacao WhatsApp</span>
+          </div>
+          <div class="team-desc">
+            Operacional pragmatico. Expertise profunda em Google Ads para saude. Muito tranquilo sob pressao, raramente se estressa. Precisa tangibilizar as coisas para manter ritmo. Pode ter oscilacoes de motivacao &mdash; aceita feedback direto.
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-name">Guilherme Domingos</div>
+          <div class="team-role">Tech Lead &bull; Automacoes &bull; Estrategia</div>
+          <div class="team-traits">
+            <span class="trait trait-green">6+ anos experiencia</span>
+            <span class="trait trait-green">Dev + AI</span>
+            <span class="trait trait-purple">Visionario</span>
+            <span class="trait trait-yellow">Sobrecarga</span>
+          </div>
+          <div class="team-desc">
+            Visionario tecnico e estrategista multifuncional. Capacidade tecnica ampla (automacoes, dev, AI). Pesquisador constante de ferramentas. Referencia de conhecimento para o time. Pode sobrecarregar-se tentando resolver tudo tecnicamente.
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-name">Sergio Crispim</div>
+          <div class="team-role">Trafego Pago &bull; Meta Ads &bull; Operacoes</div>
+          <div class="team-traits">
+            <span class="trait trait-green">Meta Ads</span>
+            <span class="trait trait-green">Senso de Urgencia</span>
+            <span class="trait trait-blue">CS Experiente</span>
+            <span class="trait trait-red">Tempo Limitado (CLT)</span>
+          </div>
+          <div class="team-desc">
+            Operador experiente e pragmatico. Mentalidade "entrega resultado". Bom em Customer Success (tempo resposta &lt;30min). Atualmente preso em emprego CLT 8h/dia. Vai ter atencao dividida com politica em ano de eleicao.
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-name">Altair Araujo</div>
+          <div class="team-role">CMO &bull; Copy &bull; Branding &bull; Gestao</div>
+          <div class="team-traits">
+            <span class="trait trait-green">Copy Excelente</span>
+            <span class="trait trait-green">Leitura de Pessoas</span>
+            <span class="trait trait-purple">Criativo</span>
+            <span class="trait trait-red">TDAH</span>
+            <span class="trait trait-yellow">Perfeccionismo</span>
+          </div>
+          <div class="team-desc">
+            Generalista apaixonado, comunicador nato. Resolucao de problemas sob pressao. Sinceridade radical. TDAH (medicado). Perfeccionismo atrasa entregas. Precisa de rotina saudavel para render. Quer ser instrumento de impacto.
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-name">Edu Wayne</div>
+          <div class="team-role">Designer &bull; Social Media &bull; Producao Visual</div>
+          <div class="team-traits">
+            <span class="trait trait-green">Design</span>
+            <span class="trait trait-blue">Ponte c/ Investidores</span>
+            <span class="trait trait-yellow">Curva Aprendizado</span>
+          </div>
+          <div class="team-desc">
+            Executivo visual em desenvolvimento. Canal direto com Eduardo Pai (investidor/canal de indicacao). Qualidade de design precisa melhorar para nivel medico. Disposicao para aprender e aceita feedback.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab: Goals -->
+    <div id="goals" class="tab-content">
+      <div class="two-col">
+        <div>
+          <div class="section-title" style="margin-top:0;">
+            <span class="icon" style="background:rgba(34,197,94,0.12);">&#127919;</span>
+            Metas Operacionais (Cliente)
+          </div>
+          <div class="card">
+            <ul class="checklist">
+              <li><span class="check">&#9744;</span> Onboarding do Dr. Rafael realizado</li>
+              <li><span class="check">&#9744;</span> LP provisoria no ar</li>
+              <li><span class="check">&#9744;</span> Google Meu Negocio criado</li>
+              <li><span class="check">&#9744;</span> Google Ads configurado e rodando</li>
+              <li><span class="check">&#9744;</span> Logo provisorio (iniciais)</li>
+              <li><span class="check">&#9744;</span> Roteiros de Reels prontos</li>
+            </ul>
+          </div>
+
+          <div class="section-title">
+            <span class="icon" style="background:rgba(245,158,11,0.12);">&#128176;</span>
+            Metas Comerciais
+          </div>
+          <div class="card">
+            <ul class="checklist">
+              <li><span class="check">&#9744;</span> Material comercial na mao do Eduardo Pai</li>
+              <li><span class="check">&#9744;</span> Precificacao definida</li>
+              <li><span class="check">&#9744;</span> 10 contatos/semana com medicos iniciada</li>
+              <li><span class="check">&#9744;</span> Playbooks enviados para o time</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="section-title" style="margin-top:0;">
+            <span class="icon" style="background:rgba(167,139,250,0.12);">&#9881;</span>
+            Infraestrutura
+          </div>
+          <div class="card">
+            <ul class="checklist">
+              <li><span class="check">&#9744;</span> Sala/coworking definida</li>
+              <li><span class="check">&#9744;</span> Discord da Pulso ativo</li>
+              <li><span class="check">&#9744;</span> ClickUp/Tasks estruturado com ciclos</li>
+              <li><span class="check">&#9744;</span> WhatsApp Business dedicado Pulso</li>
+            </ul>
+          </div>
+
+          <div class="section-title">
+            <span class="icon" style="background:rgba(59,130,246,0.12);">&#128200;</span>
+            KPIs Q2 2026
+          </div>
+          <div class="card">
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+              <div>
+                <div class="stat-label">Contas Ativas</div>
+                <div style="font-size:24px; font-weight:700;">1 <span style="font-size:14px; color:var(--text-dim);">/ 5 meta</span></div>
+              </div>
+              <div>
+                <div class="stat-label">MRR</div>
+                <div style="font-size:24px; font-weight:700;">R$ 0 <span style="font-size:14px; color:var(--text-dim);">/ 15k meta</span></div>
+              </div>
+              <div>
+                <div class="stat-label">Leads Gerados</div>
+                <div style="font-size:24px; font-weight:700;">0 <span style="font-size:14px; color:var(--text-dim);">/ 50 meta</span></div>
+              </div>
+              <div>
+                <div class="stat-label">NPS</div>
+                <div style="font-size:24px; font-weight:700;">&mdash; <span style="font-size:14px; color:var(--text-dim);">/ 9+ meta</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab: Roadmap -->
+    <div id="roadmap" class="tab-content">
+      <div class="two-col">
+        <div>
+          <div class="section-title" style="margin-top:0;">
+            <span class="icon" style="background:rgba(34,197,94,0.12);">&#128197;</span>
+            Marcos
+          </div>
+          <div class="card">
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="timeline-date">14 Abr</div>
+                <div class="timeline-title">Material comercial + Discord</div>
+                <div class="timeline-desc">Flyers para Eduardo Pai, workspace Discord</div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-date">15 Abr</div>
+                <div class="timeline-title">Onboarding Dr. Rafael</div>
+                <div class="timeline-desc">Reuniao presencial, coleta de dados, logo provisorio</div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-date">16-18 Abr</div>
+                <div class="timeline-title">LP + Google Ads no ar</div>
+                <div class="timeline-desc">Landing page provisoria, campanhas de busca ativas</div>
+              </div>
+              <div class="timeline-item future">
+                <div class="timeline-date">21 Abr</div>
+                <div class="timeline-title">Sala operacional</div>
+                <div class="timeline-desc">Coworking definido e time presencial</div>
+              </div>
+              <div class="timeline-item future">
+                <div class="timeline-date">25 Abr</div>
+                <div class="timeline-title">Primeiro lead gerado</div>
+                <div class="timeline-desc">Google Ads gerando contatos para o doutor</div>
+              </div>
+              <div class="timeline-item future">
+                <div class="timeline-date">30 Abr</div>
+                <div class="timeline-title">Segundo cliente fechado</div>
+                <div class="timeline-desc">Via indicacao Eduardo Pai</div>
+              </div>
+              <div class="timeline-item future">
+                <div class="timeline-date">Mai 2026</div>
+                <div class="timeline-title">Case de sucesso + WhatsApp AI</div>
+                <div class="timeline-desc">Documentar ROI do Dr. Rafael; Evolution em producao</div>
+              </div>
+              <div class="timeline-item future">
+                <div class="timeline-date">Jul 2026</div>
+                <div class="timeline-title">Self-hosted LLM</div>
+                <div class="timeline-desc">Servidor proprio para AI, reduzir custos</div>
+              </div>
+              <div class="timeline-item future">
+                <div class="timeline-date">Dez 2026</div>
+                <div class="timeline-title">60 contas / 180k MRR</div>
+                <div class="timeline-desc">Meta anual de faturamento e base de clientes</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="section-title" style="margin-top:0;">
+            <span class="icon" style="background:rgba(167,139,250,0.12);">&#128640;</span>
+            Frentes de Servico
+          </div>
+          <div class="card">
+            <div style="display:grid; gap:12px;">
+              <div style="padding:12px; background:rgba(34,197,94,0.06); border-radius:8px; border-left:3px solid var(--accent);">
+                <div style="font-weight:600; font-size:14px;">Google Ads</div>
+                <div style="font-size:12px; color:var(--text-muted);">Busca paga por especialidade. Principal gerador de resultado rapido.</div>
+              </div>
+              <div style="padding:12px; background:rgba(59,130,246,0.06); border-radius:8px; border-left:3px solid var(--info);">
+                <div style="font-weight:600; font-size:14px;">Meta Ads</div>
+                <div style="font-size:12px; color:var(--text-muted);">Trafego social. Entra depois do Instagram montado (semana 2-3).</div>
+              </div>
+              <div style="padding:12px; background:rgba(167,139,250,0.06); border-radius:8px; border-left:3px solid var(--purple);">
+                <div style="font-weight:600; font-size:14px;">Social Media</div>
+                <div style="font-size:12px; color:var(--text-muted);">Instagram vitrine + Reels. Depende de branding.</div>
+              </div>
+              <div style="padding:12px; background:rgba(245,158,11,0.06); border-radius:8px; border-left:3px solid var(--warning);">
+                <div style="font-weight:600; font-size:14px;">Estruturacao Comercial</div>
+                <div style="font-size:12px; color:var(--text-muted);">WhatsApp AI, CRM, auditoria de atendimento.</div>
+              </div>
+              <div style="padding:12px; background:rgba(239,68,68,0.06); border-radius:8px; border-left:3px solid var(--danger);">
+                <div style="font-weight:600; font-size:14px;">SEO</div>
+                <div style="font-size:12px; color:var(--text-muted);">Site + Google Meu Negocio. Resultado organico de longo prazo.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section-title">
+            <span class="icon" style="background:rgba(34,197,94,0.12);">&#128161;</span>
+            Decisoes Estrategicas
+          </div>
+          <div class="card">
+            <div style="display:grid; gap:10px; font-size:14px;">
+              <div style="padding:8px 0; border-bottom:1px solid var(--border);">
+                <strong>Velocidade &gt; Perfeicao</strong>
+                <div style="font-size:12px; color:var(--text-muted);">LP sem branding; Google Ads antes de Instagram</div>
+              </div>
+              <div style="padding:8px 0; border-bottom:1px solid var(--border);">
+                <strong>Processo minimo ate 5k MRR</strong>
+                <div style="font-size:12px; color:var(--text-muted);">Entregar no braco; formalizar depois</div>
+              </div>
+              <div style="padding:8px 0; border-bottom:1px solid var(--border);">
+                <strong>Ciclos Scrum semanais</strong>
+                <div style="font-size:12px; color:var(--text-muted);">Planejamento + abertura + fechamento</div>
+              </div>
+              <div style="padding:8px 0; border-bottom:1px solid var(--border);">
+                <strong>Discord como canal interno</strong>
+                <div style="font-size:12px; color:var(--text-muted);">Substituir WhatsApp para comunicacao do time</div>
+              </div>
+              <div style="padding:8px 0;">
+                <strong>Reunioes segmentadas por frente</strong>
+                <div style="font-size:12px; color:var(--text-muted);">Nao fazer all-hands toda vez</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab: Risks -->
+    <div id="risks" class="tab-content">
+      <div class="section">
+        <div class="section-title" style="margin-top:0;">
+          <span class="icon" style="background:rgba(239,68,68,0.12);">&#9888;</span>
+          Riscos Identificados
+        </div>
+        <div class="risk-grid">
+          <div class="risk-item">
+            <div class="risk-label">WhatsApp AI instavel (Evolution API)</div>
+            <span class="risk-level level-high">Prob. Alta</span>
+            <span class="risk-level level-high">Impacto Alto</span>
+          </div>
+          <div class="risk-item">
+            <div class="risk-label">5 socios = decisoes fragmentadas</div>
+            <span class="risk-level level-med">Prob. Media</span>
+            <span class="risk-level level-high">Impacto Alto</span>
+          </div>
+          <div class="risk-item">
+            <div class="risk-label">Dependencia do Eduardo Pai para vendas</div>
+            <span class="risk-level level-high">Prob. Alta</span>
+            <span class="risk-level level-high">Impacto Alto</span>
+          </div>
+          <div class="risk-item">
+            <div class="risk-label">Tempo limitado dos socios (emprego CLT)</div>
+            <span class="risk-level level-high">Prob. Alta</span>
+            <span class="risk-level level-med">Impacto Medio</span>
+          </div>
+          <div class="risk-item">
+            <div class="risk-label">Qualidade de design insuficiente p/ medicos</div>
+            <span class="risk-level level-med">Prob. Media</span>
+            <span class="risk-level level-med">Impacto Medio</span>
+          </div>
+          <div class="risk-item">
+            <div class="risk-label">Burnout do Altair (TDAH + perfeccionismo)</div>
+            <span class="risk-level level-med">Prob. Media</span>
+            <span class="risk-level level-high">Impacto Alto</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      Pulso &mdash; Painel gerado por AI a partir da transcricao da reuniao de 11/04/2026 (3h25min, 5 participantes) &bull; Fathom + Claude
+    </footer>
+  </div>
+
+  <script>
+    function showTab(id) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      event.target.classList.add('active');
+    }
+  </script>
+</body>
+</html>
